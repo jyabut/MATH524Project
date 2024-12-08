@@ -152,3 +152,111 @@ plot(R5, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
 title(main = "5% - 76 modes", cex.main = 3)
 
 dev.off()
+
+##### Figure 5: SVD for WEATHER photo and plot reconstructions #####
+
+grayWthr = grayscale(wthr)
+svdWthr = svd(grayWthr)
+
+wU = svdWthr$u
+wD = diag(svdWthr$d)
+wV = svdWthr$v
+
+row = dim(wthr)[1]
+col = dim(wthr)[2]
+
+par(mfrow = c(2,2), mar=c(0.5,1,4,1))
+
+w1 = 165
+wthr1 = as.cimg(wU[,1:w1]%*%wD[1:w1, 1:w1]%*%t(wV[, 1:w1]))
+plot(wthr1, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "100% - 165 modes",cex.main = 2)
+
+w2 = 124
+wthr2 = as.cimg(wU[,1:w2]%*%wD[1:w2, 1:w2]%*%t(wV[, 1:w2]))
+plot(wthr2, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "75% - 124 modes",cex.main = 2)
+
+w3 = 42
+wthr3 = as.cimg(wU[,1:w3]%*%wD[1:w3, 1:w3]%*%t(wV[, 1:w3]))
+plot(wthr3, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "25% - 42 modes",cex.main = 2)
+
+w4 = 17
+wthr4 = as.cimg(wU[,1:w4]%*%wD[1:w4, 1:w4]%*%t(wV[, 1:w4]))
+plot(wthr4, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "10% - 17 modes",cex.main = 2)
+
+dev.off()
+
+##### Figure 6: SVD for GATE photo and plot reconstructions #####
+
+grayGate = grayscale(gate)
+svdGate = svd(grayGate)
+
+gU = svdGate$u
+gD = diag(svdGate$d)
+gV = svdGate$v
+
+row = dim(gate)[1]
+col = dim(gate)[2]
+
+par(mfrow = c(2,2), mar=c(0.5,1,4,1))
+
+g1 = 480
+gate1 = as.cimg(gU[,1:g1]%*%gD[1:g1, 1:g1]%*%t(gV[, 1:g1]))
+plot(gate1, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "100% - 480 modes",cex.main = 2)
+
+g2 = 340
+gate2 = as.cimg(gU[,1:g2]%*%gD[1:g2, 1:g2]%*%t(gV[, 1:g2]))
+plot(gate2, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "71% - 340 modes",cex.main = 2)
+
+g3 = 200
+gate3 = as.cimg(gU[,1:g3]%*%gD[1:g3, 1:g3]%*%t(gV[, 1:g3]))
+plot(gate3, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "42% - 200 modes",cex.main = 2)
+
+g4 = 100
+gate4 = as.cimg(gU[,1:g4]%*%gD[1:g4, 1:g4]%*%t(gV[, 1:g4]))
+plot(gate4, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "21% - 100 modes",cex.main = 2)
+
+dev.off()
+
+##### Figure 7: SVD for LIBRARY photo and plot reconstructions #####
+
+grayLbry = grayscale(lbry)
+svdLbry = svd(grayLbry)
+
+lU = svdLbry$u
+lD = diag(svdLbry$d)
+lV = svdLbry$v
+
+row = dim(lbry)[1]
+col = dim(lbry)[2]
+
+par(mfrow = c(2,2), mar=c(0.5,1,4,1))
+
+l1 = 979
+lbry1 = as.cimg(lU[,1:l1]%*%lD[1:l1, 1:l1]%*%t(lV[, 1:l1]))
+plot(lbry1, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "100% - 979 modes",cex.main = 2)
+
+l2 = 735
+lbry2 = as.cimg(lU[,1:l2]%*%lD[1:l2, 1:l2]%*%t(lV[, 1:l2]))
+plot(lbry2, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "75% - 735 modes",cex.main = 2)
+
+l3 = 420
+lbry3 = as.cimg(lU[,1:l3]%*%lD[1:l3, 1:l3]%*%t(lV[, 1:l3]))
+plot(lbry3, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "43% - 420 modes",cex.main = 2)
+
+l4 = 75
+lbry4 = as.cimg(lU[,1:l4]%*%lD[1:l4, 1:l4]%*%t(lV[, 1:l4]))
+plot(lbry4, xlim = c(0, row), ylim = c(col,0), axes=FALSE)
+title(main = "8% - 75 modes",cex.main = 2)
+
+dev.off()
